@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'polls.apps.PollsConfig',
+    'core.apps.CoreConfig',
 ]
 
 MIDDLEWARE = [
@@ -119,4 +121,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOGIN_REDIRECT_URL = '/polls'
+LOGIN_REDIRECT_URL = '/profile'
