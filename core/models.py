@@ -9,6 +9,7 @@ class Profile(models.Model):
     song = models.CharField(max_length=75, blank=True)
     movie = models.CharField(max_length=75, blank=True)
     tv = models.CharField(max_length=75, blank=True)
+    unpacked = models.BooleanField(default=False)
 
 
 def create_profile(sender, **kwargs):
@@ -16,4 +17,5 @@ def create_profile(sender, **kwargs):
     if kwargs["created"]:
         user_profile = Profile(user=user)
         user_profile.save()
+
 post_save.connect(create_profile, sender=User)

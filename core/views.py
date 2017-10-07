@@ -3,10 +3,20 @@ from django.template import loader
 from django.shortcuts import render
 
 from .models import Profile
+from .forms import ProfileForm
 
 #def profile(request):
-#    template = loader.get_template('core/profile.html')
-#    return HttpResponse(template.render(context, request))
+#    return render(request, 'core/profile.html')
+
+#def profile(request):
+#	form = ProfileForm()
+#	return render(request, 'core/profile.html', {'form': form})
 
 def profile(request):
-    return render(request, 'core/profile.html')
+    if request.method == "POST":
+        form = ProfileForm(request.POST)
+        prof = form.save(commit=False)
+        prof.save()
+    else:
+        form = ProfileForm()
+    return render(request, 'core/profile.html', {'form': form})
