@@ -1,3 +1,13 @@
+<h2>{{ user.username }}</h2>
+
+<div>
+
+    {%for z in all_users %}
+        {{ z.username }} - {{ z.profile.song }}<br/>
+    {% endfor %}
+
+</div>
+
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
@@ -7,3 +17,7 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+
+<!--
+<input id="{{ field.name }}"" name="{{ field.name }}" value="{{ field.name }}" type="text" />
+-->

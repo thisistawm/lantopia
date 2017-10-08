@@ -1,12 +1,16 @@
 from django.shortcuts import render
+from django.core import serializers
+from django.contrib.auth.models import User
 
+from core.models import Profile
 from .models import Question
 
 
 def index(request):
     latest_question_list = Question.objects.order_by('-pub_date')[:5]
-    context = {'latest_question_list': latest_question_list}
-    return render(request, 'polls/index.html', context)
+    all_users = User.objects.all()
+    return render(request, 'polls/index.html', {'all_users': all_users})
+
 
 def detail(request, question_id):
     return HttpResponse("You're looking at question %s." % question_id)

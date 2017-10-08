@@ -2,6 +2,33 @@ body{
 	background-color:#444;
 }
 
+.loginPrompt{
+	text-align:center;
+	margin-top:150px;
+	color:#fff
+}
+
+.loginError{
+	color:#fff;
+	position:fixed;
+	width:100%;
+	text-align:center;
+	top:100px;
+}
+
+.loginInput{
+	padding:10px;
+	margin:10px;
+	background: #222;
+	color:#fff;
+	border:none;
+	text-align:center;
+}
+
+.loginButton{
+	background-color: #222; 
+}
+
 ::-webkit-input-placeholder {
    text-align: center;
 }

@@ -21,8 +21,10 @@ from .forms import CustomAuthForm
 urlpatterns = [
     url(r'^profile/', include('core.urls')),
     url(r'^polls/', include('polls.urls')),
+    url(r'^picks/', include('picks.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^access/login/', auth_views.login, name='login', kwargs={"authentication_form":CustomAuthForm}),
-    url(r'^access/', include('django.contrib.auth.urls')),
+    url(r'^login/', auth_views.login, name='login', kwargs={"authentication_form":CustomAuthForm}),
+    #url(r'^access/', include('django.contrib.auth.urls')),
     url(r'^logout/$', auth_views.logout, {'next_page':'/access/login'}, name='logout')
+
 ]

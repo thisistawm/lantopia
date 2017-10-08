@@ -40,7 +40,7 @@
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
 
-<div class="loginPrompt" style="text-align:center; margin-top:200px; color:#fff">
+<div class="loginPrompt">
 
 <div>
   <td>{{ form.username }}</td>
@@ -48,9 +48,8 @@
 <div>
   <td>{{ form.password }}</td>
 </div>
-<br />
 <div>
-  <input type="submit" value="login" />
+  <input class="loginInput" type="submit" value="login" />
   <input type="hidden" name="next" value="{{ next }}" />
 </div>
 </form>
