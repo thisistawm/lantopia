@@ -5,5 +5,5 @@ from django.conf import settings
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.profile, name='profile'),
+    url(r'^$', views.updateProfile, name='profile'),
 ]

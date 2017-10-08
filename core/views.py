@@ -12,11 +12,13 @@ from .forms import ProfileForm
 #	form = ProfileForm()
 #	return render(request, 'core/profile.html', {'form': form})
 
-def profile(request):
+def updateProfile(request):
     if request.method == "POST":
-        form = ProfileForm(request.POST)
-        prof = form.save(commit=False)
-        prof.save()
+        profile_form = ProfileForm(request.POST,  instance=request.user.profile)
+        if profile_form.is_valid():
+            profile_form.save()
     else:
-        form = ProfileForm()
-    return render(request, 'core/profile.html', {'form': form})
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request, 'core/profile.html', {
+    	'profile_form': profile_form
+    })
