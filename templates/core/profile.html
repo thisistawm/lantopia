@@ -1,7 +1,6 @@
 <h2>{{ user.username }}</h2>
 <ul>
   <li>Username: {{ user.username }}</li>
-  <li>Email: {{ user.email }}</li>
   <li>Game: {{ user.profile.game }}</li>
   <li>Movie: {{ user.profile.movie }}</li>
   <li>TV: {{ user.profile.tv }}</li>
@@ -11,8 +10,20 @@
 
 
 <form method="POST">{% csrf_token %}
-    {{ profile_form.as_p }}
-    <button class="loginButton" type="submit">Save</button>
+    <!--{{ password_form.password }}
+    #{{ profile_form.as_p }}-->
+
+    {%for z in password_form %}
+        {{ z.label_tag }} - {{ z }} <br/>
+    {% endfor %}
+
+<br /><br />
+
+    {%for z in profile_form %}
+        {{ z.label_tag }} - {{ z }} <br/>
+    {% endfor %}
+
+    <button class="loginButton" type="submit">Update Profile</button>
 </form>
 
 <a href="/logout">logout</href>

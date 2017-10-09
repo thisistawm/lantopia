@@ -6,7 +6,7 @@ from core.models import Profile
 
 
 
-class UserProfileInline(admin.TabularInline):
+class UserProfileInline(admin.StackedInline):
     model = Profile
 
 

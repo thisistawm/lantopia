@@ -25,6 +25,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^login/', auth_views.login, name='login', kwargs={"authentication_form":CustomAuthForm}),
     #url(r'^access/', include('django.contrib.auth.urls')),
-    url(r'^logout/$', auth_views.logout, {'next_page':'/access/login'}, name='logout')
+    url(r'^logout/$', auth_views.logout, {'next_page':'/login'}, name='logout')
 
 ]
