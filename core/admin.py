@@ -2,17 +2,18 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.contrib.auth.models import User
 
-from core.models import Profile
+from core.models import Profile, Todo
 
 
 
-class UserProfileInline(admin.StackedInline):
+class ProfileInline(admin.StackedInline):
     model = Profile
 
-
+class TodoInline(admin.StackedInline):
+    model = Todo
 
 class UserAdmin(DjangoUserAdmin):
-    inlines = (UserProfileInline,)
+    inlines = (ProfileInline, TodoInline)
 
 
 

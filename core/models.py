@@ -9,8 +9,18 @@ class Profile(models.Model):
     song = models.CharField(max_length=75, blank=True)
     movie = models.CharField(max_length=75, blank=True)
     tv = models.CharField(max_length=75, blank=True)
-    unpacked = models.BooleanField(default=False)
 
+def create_todo(sender, **kwargs):
+    user = kwargs["instance"]
+    if kwargs["created"]:
+        user_todo = Todo(user=user)
+        user_todo.save()
+
+class Todo(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
+    unpacked = models.BooleanField(default=False)
+    setup = models.BooleanField(default=False)
+    connected = models.BooleanField(default=False)
 
 def create_profile(sender, **kwargs):
     user = kwargs["instance"]
@@ -19,3 +29,4 @@ def create_profile(sender, **kwargs):
         user_profile.save()
 
 post_save.connect(create_profile, sender=User)
+post_save.connect(create_todo, sender=User)

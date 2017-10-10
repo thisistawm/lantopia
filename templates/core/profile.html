@@ -14,16 +14,29 @@
     #{{ profile_form.as_p }}-->
 
     {%for z in password_form %}
-        {{ z.label_tag }} - {{ z }} <br/>
+            {{ z.label_tag }} - {{ z }} <br/>
     {% endfor %}
+    <button class="loginButton" type="submit">Update Password</button>
+</form>
 
 <br /><br />
 
-    {%for z in profile_form %}
-        {{ z.label_tag }} - {{ z }} <br/>
+<form method="POST">{% csrf_token %}
+    {%for z in todo_form %}
+        	{% if z.value == False %}
+                <div class='toDoItem'>{{ z }}{{ z.label }}</div><br/>
+            {% else %}
+                <div style="visibility:hidden;position:absolute;">{{ z }}</div>
+		    {% endif %}
     {% endfor %}
+    <button name="todoUpdateButton" type="submit">Update todo</button>
+</form>
 
-    <button class="loginButton" type="submit">Update Profile</button>
+<form method="POST">{% csrf_token %}
+    {%for z in profile_form %}
+        {{ z.label_tag }} - {{ z }}<br/>
+    {% endfor %}
+    <button class="loginButton" name="profileUpdateButton" type="submit">Update Profile</button>
 </form>
 
 <a href="/logout">logout</href>
