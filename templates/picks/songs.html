@@ -1,0 +1,17 @@
+<h2>SAWNGS</h2>
+ 
+<div>
+ 
+    {%for z in all_users %}
+    	{% if z.profile.song != '' %}
+        <table>
+            <tr>
+                <td width="100px">{{ z.username }}:</td>
+                <td width="100px">{{ z.profile.song }}</td>
+                <td><a href="http://google.com/search?q=youtube+{{ z.profile.song }}&btnI" target="_blank">youtube</a>
+            </tr>
+        </table>
+        {% endif %}
+    {% endfor %}
+ 
+</div>

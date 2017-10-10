@@ -6,4 +6,6 @@ from . import views
 
 urlpatterns = [
     url(r'^$', views.updateProfile, name='profile'),
+    url(r'^home/$', views.homeInfo, name='homeInfo'),
+
 ]

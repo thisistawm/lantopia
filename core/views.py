@@ -3,8 +3,9 @@ from django.template import loader
 from django.shortcuts import render
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
+from django.utils import timezone
 
-from .models import Profile, Todo
+from .models import Profile, Todo, HomeInfo
 from .forms import ProfileForm, TodoForm
 
 #def profile(request):
@@ -39,3 +40,7 @@ def updateProfile(request):
         'profile_form': profile_form,
         'todo_form': todo_form
     })
+
+def homeInfo(request):
+    info = HomeInfo.objects.filter(post_time__lte=timezone.now()).order_by('post_time')
+    return render(request, 'core/home.html', {'info': info} )

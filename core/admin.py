@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.contrib.auth.models import User
 
-from core.models import Profile, Todo
+from core.models import Profile, Todo, HomeInfo
 
 
 
@@ -16,6 +16,6 @@ class UserAdmin(DjangoUserAdmin):
     inlines = (ProfileInline, TodoInline)
 
 
-
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
+admin.site.register(HomeInfo)
