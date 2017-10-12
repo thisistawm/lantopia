@@ -17,11 +17,15 @@ from .forms import ProfileForm, TodoForm
 
 def updateProfile(request):
     if request.method == "POST" and 'profileUpdateButton' in request.POST:
-        password_form = PasswordChangeForm(request.user, request.POST)
         profile_form = ProfileForm(request.POST,  instance=request.user.profile)
+        password_form = PasswordChangeForm(request.user)
         todo_form = TodoForm(instance=request.user.todo)
         if profile_form.is_valid():
             profile_form.save()
+    elif request.method == "POST" and 'passwordUpdateButton' in request.POST:
+        password_form = PasswordChangeForm(request.user, request.POST)
+        todo_form = TodoForm(instance=request.user.todo)
+        profile_form = ProfileForm(instance=request.user.profile)
         if password_form.is_valid():
             user = password_form.save()
             update_session_auth_hash(request, user)
