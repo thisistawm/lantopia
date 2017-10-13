@@ -1,0 +1,21 @@
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}" />
+
+<div class="loginPrompt">
+
+  <form method="post">
+    {% csrf_token %}
+
+    {% for field in form %}
+        
+        <div>{{ field }}</div>
+        
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+    {% endfor %}
+  <input class="loginInput" type="submit" value="sign up" />
+  </form>
+
+</div>

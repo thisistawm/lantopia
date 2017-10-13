@@ -17,14 +17,14 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from .forms import CustomAuthForm
+from core import views
 
 urlpatterns = [
     url(r'^profile/', include('core.urls')),
+    url(r'^signup/', include('core.urls')),
     url(r'^polls/', include('polls.urls')),
     url(r'^picks/', include('picks.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^login/', auth_views.login, name='login', kwargs={"authentication_form":CustomAuthForm}),
-    #url(r'^access/', include('django.contrib.auth.urls')),
-    url(r'^logout/$', auth_views.logout, {'next_page':'/login'}, name='logout')
-
+    url(r'^logout/$', auth_views.logout, {'next_page':'/login'}, name='logout'),
 ]

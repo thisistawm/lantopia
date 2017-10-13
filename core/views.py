@@ -1,12 +1,13 @@
 from django.http import HttpResponse
 from django.template import loader
-from django.shortcuts import render
-from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.forms import PasswordChangeForm
+from django.shortcuts import render, redirect
+from django.contrib.auth import update_session_auth_hash, login, authenticate
+from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.utils import timezone
 
 from .models import Profile, Todo, HomeInfo
 from .forms import ProfileForm, TodoForm
+from lantopia.forms import SignupForm
 
 #def profile(request):
 #    return render(request, 'core/profile.html')
@@ -44,6 +45,21 @@ def updateProfile(request):
         'profile_form': profile_form,
         'todo_form': todo_form
     })
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/profile')
+    else:
+        form = SignupForm()
+    return render(request, 'core/signup.html', {'form': form})
+
 
 def homeInfo(request):
     info = HomeInfo.objects.filter(post_time__lte=timezone.now()).order_by('post_time')
