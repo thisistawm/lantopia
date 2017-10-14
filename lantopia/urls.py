@@ -20,8 +20,9 @@ from .forms import CustomAuthForm
 from core import views
 
 urlpatterns = [
+    url(r'^home/$', views.homeInfo, name='homeInfo'),
     url(r'^profile/', include('core.urls')),
-    url(r'^signup/', include('core.urls')),
+    url(r'^signup/$', views.signup, name='signup'),
     url(r'^polls/', include('polls.urls')),
     url(r'^picks/', include('picks.urls')),
     url(r'^admin/', admin.site.urls),

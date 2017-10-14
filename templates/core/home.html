@@ -1,10 +1,13 @@
-{% for z in info %}
-    {{ z }}<br />
-{% endfor %}
-
-<h3>WOOOO</h3>
-
-<div style="width:100%;text-align: center"><a href="/profile">profile</a>  |  <a href="/picks/songs">songs</a></div>
+{% extends 'core/base.html' %}
 
 {% block content %}
+
+<h3>LANtopia</h3>
+
+{% for z in info %}
+    <h3>{{ z.headline }}</h3>
+	{{ z.details }}<br />
+	{{ z.nextup }}<br />
+{% endfor %}
+
 {% endblock %}
