@@ -1,19 +1,41 @@
-<h2>{{ user.username }}</h2>
+{% extends 'core/base.html' %}
 
-<div>
+{% block content %}
 
-    {%for z in all_users %}
-        {{ z.username }} - {{ z.profile.song }}<br/>
+<!--
+<form method="POST">{% csrf_token %}
+    {%for z in todo_form %}
+        	{% if z.value == False %}
+                <div class='toDoItem'>{{ z }}{{ z.label }}</div><br/>
+            {% else %}
+                <div style="visibility:hidden;position:absolute;">{{ z }}</div>
+		    {% endif %}
     {% endfor %}
+    <button name="todoUpdateButton" type="submit">Update todo</button>
+</form>
+-->
 
-</div>
+{{ latest_question.question_text }}
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
 {% if latest_question_list %}
-    <ul>
     {% for question in latest_question_list %}
-        <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+        
+<h1>{{ question.question_text }}</h1>
+
+
+<form method="post">
+{% csrf_token %}
+{% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+{% endfor %}
+<input type="submit" value="Vote" />
+</form>
+
+
     {% endfor %}
-    </ul>
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
@@ -21,3 +43,5 @@
 <!--
 <input id="{{ field.name }}"" name="{{ field.name }}" value="{{ field.name }}" type="text" />
 -->
+
+{% endblock %}

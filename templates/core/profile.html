@@ -12,11 +12,7 @@
   <li>Unpacked: {{ user.profile.unpacked }}</li>
 </ul>
 
-
 <form method="POST">{% csrf_token %}
-    <!--{{ password_form.password }}
-    #{{ profile_form.as_p }}-->
-
     {%for z in password_form %}
             {{ z.label_tag }} - {{ z }} <br/>
     {% endfor %}
