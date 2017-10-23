@@ -18,7 +18,7 @@ var onError = function(err) {
 };
 
 gulp.task('sass', function () {
-    gulp.src('./node_modules/bootstrap/scss/*.scss')
+    gulp.src('./bootstrap/scss/*.scss')
         .pipe(plumber({errorHandler: onError}))
         .pipe(sass().on('error', onError))
         .pipe(prefix({ browsers: ['last 2 versions', '> 10%'] } ))
@@ -37,7 +37,7 @@ gulp.task('minify', function() {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('./node_modules/bootstrap/scss/*.scss', ['sass']);
+    gulp.watch('./bootstrap/scss/*.scss', ['sass']);
     //gulp.watch('images/icons/*.svg', ['icons']);
     //gulp.watch('js/src/*.js', ['uglify']);
 });

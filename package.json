@@ -14,7 +14,7 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/thisistawm/lantopia/issues"
-  }, 
+  },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-install": "^1.1.0",
