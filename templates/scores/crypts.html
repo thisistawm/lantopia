@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<h2>Cryptonomicon</h2>
+ 
+<div>
+ 
+    {%for z in all_users %}
+        <table>
+            <tr>
+                <td width="100px">{{ z.username }}:</td>
+            </tr>
+        </table>
+    {% endfor %}
+
+    {%for z in all_teams %}
+        <table>
+            <tr>
+                <td width="200px">{{ z.team_name }}:</td>
+                <td width="100px">{{ z.member1 }}</td>
+                <td width="100px">{{ z.member2 }}</td>
+                <td width="100px">{{ z.crypts_wave }}</td>
+                <td width="100px">{{ z.crypts_remaining }}</td>
+            </tr>
+        </table>
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}

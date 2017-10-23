@@ -19,9 +19,11 @@ class Profile(models.Model):
 
 class Todo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
-    unpacked = models.BooleanField(default=False)
-    setup = models.BooleanField(default=False)
-    connected = models.BooleanField(default=False)
+    sayHi = models.BooleanField(default=False)
+    getGames = models.BooleanField(default=False)
+    checkDrinks = models.BooleanField(default=False)
+    makePicks = models.BooleanField(default=False)
+    doRevel = models.BooleanField(default=False)
 
 #def create_profile(sender, **kwargs):
 #    user = kwargs["instance"]

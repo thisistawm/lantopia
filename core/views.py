@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render, redirect
 from django.contrib.auth import update_session_auth_hash, login, authenticate
@@ -9,14 +9,7 @@ from .models import Profile, Todo, HomeInfo
 from .forms import ProfileForm, TodoForm
 from lantopia.forms import SignupForm
 
-#def profile(request):
-#    return render(request, 'core/profile.html')
-
-#def profile(request):
-#	form = ProfileForm()
-#	return render(request, 'core/profile.html', {'form': form})
-
-def updateProfile(request):
+def profile(request):
     if request.method == "POST" and 'profileUpdateButton' in request.POST:
         profile_form = ProfileForm(request.POST,  instance=request.user.profile)
         password_form = PasswordChangeForm(request.user)
@@ -40,11 +33,18 @@ def updateProfile(request):
         password_form = PasswordChangeForm(request.user)
         profile_form = ProfileForm(instance=request.user.profile)
         todo_form = TodoForm(instance=request.user.todo)
-    return render(request, 'core/profile.html', {
-        'password_form': password_form,
-        'profile_form': profile_form,
-        'todo_form': todo_form
-    })
+    if request.method =="POST":
+        return HttpResponseRedirect('/profile', {
+	        'password_form': password_form,
+	        'profile_form': profile_form,
+	        'todo_form': todo_form
+        })
+    else:
+        return render(request, 'core/profile.html', {
+            'password_form': password_form,
+            'profile_form': profile_form,
+            'todo_form': todo_form
+        })
 
 def signup(request):
     if request.method == 'POST':
@@ -55,7 +55,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('/profile')
+            return HttpResponseRedirect('/profile')
     else:
         form = SignupForm()
     return render(request, 'core/signup.html', {'form': form})

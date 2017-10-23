@@ -27,5 +27,7 @@ urlpatterns = [
     url(r'^picks/', include('picks.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^login/', auth_views.login, name='login', kwargs={"authentication_form":CustomAuthForm}),
+    url(r'^$', auth_views.login, name='login', kwargs={"authentication_form":CustomAuthForm}),
     url(r'^logout/$', auth_views.logout, {'next_page':'/login'}, name='logout'),
+    url(r'^scores/', include('scores.urls')),
 ]

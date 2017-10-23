@@ -41,7 +41,3 @@ def vote(request):
         latest_question = Question.objects.latest('pub_date')
         context = {'latest_question_list': latest_question_list, 'latest_question': latest_question }
         return render(request, 'polls/index.html', context)
-        # Always return an HttpResponseRedirect after successfully dealing
-        # with POST data. This prevents data from being posted twice if a
-        # user hits the Back button.
-        # return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))

@@ -11,9 +11,18 @@ class ProfileForm(forms.ModelForm):
 class TodoForm(forms.ModelForm):
     class Meta:
         model = Todo
-        fields = ('unpacked', 'setup', 'connected')
+        fields = ('sayHi', 'getGames', 'checkDrinks', 'makePicks', 'doRevel')
         widgets = {
-            'unpacked': forms.CheckboxInput(attrs={'name': 'todoUpdateButton', 'onclick':'this.form.submit();'}),
-            'setup': forms.CheckboxInput(attrs={'name': 'todoUpdateButton', 'onclick':'this.form.submit();'}),
-            'connected': forms.CheckboxInput(attrs={'name': 'todoUpdateButton', 'onclick':'this.form.submit();'}),
+            'sayHi': forms.CheckboxInput(attrs={'name': 'todoUpdateButton', 'onclick':'this.form.submit();'}),
+            'getGames': forms.CheckboxInput(attrs={'name': 'todoUpdateButton', 'onclick':'this.form.submit();'}),
+            'checkDrinks': forms.CheckboxInput(attrs={'name': 'todoUpdateButton', 'onclick':'this.form.submit();'}),
+            'makePicks': forms.CheckboxInput(attrs={'name': 'todoUpdateButton', 'onclick':'this.form.submit();'}),
+            'doRevel': forms.CheckboxInput(attrs={'name': 'todoUpdateButton', 'onclick':'this.form.submit();'}),
+        }
+        labels = {
+            "sayHi":"Say hi to everyone",
+            "getGames":"Get all games",
+            "checkDrinks":"Check out food & drink",
+            "makePicks":"Provide recommendations",
+            "doRevel":"Revel",
         }

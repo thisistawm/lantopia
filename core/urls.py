@@ -6,5 +6,5 @@ from lantopia.forms import CustomAuthForm
 from . import views
 
 urlpatterns = [
-    url(r'^$', views.updateProfile, name='profile'),
+    url(r'^$', views.profile, name='profile'),
 ]

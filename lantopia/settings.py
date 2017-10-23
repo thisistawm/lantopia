@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'polls.apps.PollsConfig',
     'core.apps.CoreConfig',
+    'scores.apps.ScoresConfig',
 ]
 
 MIDDLEWARE = [
