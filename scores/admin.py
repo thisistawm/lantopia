@@ -1,4 +1,12 @@
 from django.contrib import admin
-from .models import Team
+from .models import Team, TeamMember
 
-admin.site.register(Team)
+
+class TeamMemberInline(admin.StackedInline):
+    model = TeamMember
+    extra = 2
+
+class TeamAdmin(admin.ModelAdmin):
+    inlines = (TeamMemberInline,)
+
+admin.site.register(Team, TeamAdmin)

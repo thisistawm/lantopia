@@ -10,6 +10,7 @@ class Profile(models.Model):
     song = models.CharField(max_length=75, blank=True)
     movie = models.CharField(max_length=75, blank=True)
     tv = models.CharField(max_length=75, blank=True)
+    caps = models.IntegerField(default=0)
 
 #def create_todo(sender, **kwargs):
 #    user = kwargs["instance"]
