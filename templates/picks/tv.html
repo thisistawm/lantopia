@@ -4,7 +4,7 @@
 
 {% include "picks/picks_menu.html" %}
 
-<h2>SAWNGS</h2>
+<h2>TEA VEEs</h2>
 
  <table class="table table-dark">
     <thead>
@@ -17,12 +17,12 @@
     <tbody>
     
     {%for z in all_users %}
-    	{% if z.profile.song != '' %}
+    	{% if z.profile.tv != '' %}
         
         <tr>
             <td>{{ z.username }}:</td>
-            <td>{{ z.profile.song }}</td>
-            <td><a href="http://google.com/search?q=youtube+{{ z.profile.song }}&btnI" target="_blank">youtube</a></td>
+            <td>{{ z.profile.tv }}</td>
+            <td><a href="http://google.com/search?q=youtube+{{ z.profile.tv }}&btnI" target="_blank">youtube</a></td>
         </tr>
             
         {% endif %}
