@@ -21,18 +21,23 @@
 
 {% if latest_question_list %}
     {% for question in latest_question_list %}
-        
-<h1>{{ question.question_text }}</h1>
+<div class="card-group">
+<div class="card w-50">
+    <div class="card-block">    
+        <h4>{{ question.question_text }}</h4>
 
 
-<form method="post">
-{% csrf_token %}
-{% for choice in question.choice_set.all %}
-    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
-{% endfor %}
-<input type="submit" value="Vote" />
-</form>
+        <form method="post">
+        {% csrf_token %}
+        {% for choice in question.choice_set.all %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+        {% endfor %}
+        <input type="submit" value="Vote" />
+        </form>
+    </div>
+</div>
+</div>
 
 
     {% endfor %}
@@ -45,3 +50,4 @@
 -->
 
 {% endblock %}
+

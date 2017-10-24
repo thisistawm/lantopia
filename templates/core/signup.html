@@ -1,21 +1,25 @@
 
-{% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}" />
+{% extends 'core/base.html' %}
+
+{% block content %}
 
 <div class="loginPrompt">
 
   <form method="post">
     {% csrf_token %}
 
+
     {% for field in form %}
         
         <div>{{ field }}</div>
         
         {% for error in field.errors %}
-          <p style="color: red">{{ error }}</p>
+          <div class="invalid-feedback">{{ error }}</div>
         {% endfor %}
     {% endfor %}
-  <input class="loginInput" type="submit" value="sign up" />
+  <button class="loginInput btn btn-primary" type="submit">Sign Up</button>
   </form>
 
 </div>
+
+{% endblock %}
