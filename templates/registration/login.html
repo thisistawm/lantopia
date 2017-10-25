@@ -1,5 +1,7 @@
-
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/bootstrap.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}" />
 
 {% block content %}
@@ -21,43 +23,44 @@
 </div>
 </form>
 -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-6 col-lg-3">
 
-<div class="loginError" style="color:#fff;position:fixed;width:100%;text-align:center;top:100px;">
-  {% if form.errors %}
-  <p>stay determined. . .</p>
-  {% endif %}
+      <div class="loginError" style="color:#fff;position:fixed;width:100%;text-align:center;top:100px;">
+        {% if form.errors %}
+        <p>stay determined. . .</p>
+        {% endif %}
 
-  {% if next %}
-      {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed,
-      please login with an account that has access.</p>
-      {% else %}
-      <p>Please login to see this page.</p>
-      {% endif %}
-  {% endif %}
+        {% if next %}
+            {% if user.is_authenticated %}
+            <p>Your account doesn't have access to this page. To proceed,
+            please login with an account that has access.</p>
+            {% else %}
+            <p>Please login to see this page.</p>
+            {% endif %}
+        {% endif %}
+      </div>
+
+      <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+
+
+      {{ form.username }}
+      {{ form.password }}
+
+        <button class="loginInput btn btn-primary" type="submit">Login</button>
+        <input type="hidden" name="next" value="{{ next }}" />
+
+      </form>
+
+      <button class="loginInput btn btn-secondary" onclick="location.href='/signup';">Sign Up</button>
+
+      
+
+      </form>
+    </div>
+  </div>
 </div>
-
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-
-<div class="loginPrompt">
-
-<div>
-  <td>{{ form.username }}</td>
-</div>
-<div>
-  <td>{{ form.password }}</td>
-</div>
-<div>
-  <input class="loginInput" type="submit" value="login" />
-  <input type="hidden" name="next" value="{{ next }}" />
-</div>
-</form>
-
-<input class="loginInput" onclick="location.href='/signup';" value="sign up" />
-
-</div>
-
-
 
 {% endblock %}

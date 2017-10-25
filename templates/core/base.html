@@ -1,5 +1,6 @@
 <!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="https://fonts.googleapis.com/css?family=Encode+Sans:100,200,300,500,700|Orbitron:400,900" rel="stylesheet"> 
 {% load static %}
 <link rel="stylesheet" type="text/css" href="{% static 'core/bootstrap.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}" />
@@ -13,19 +14,19 @@
   	<div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/home">Home</a>
+        <a class="nav-link {% if request.path == '/home/' %} active {% endif %}" href="/home">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/profile">Profile</a>
+        <a class="nav-link {% if request.path == '/profile/' %} active {% endif %}" href="/profile">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/scores">Leaderboards</a>
+        <a class="nav-link {% if request.path == '/scores/' %} active {% endif %}" href="/scores">Leaderboards</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/picks">Recommendations</a>
+        <a class="nav-link {% if request.path == '/picks/' %} active {% endif %}" href="/picks">Recommendations</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/polls">Vote</a>
+        <a class="nav-link {% if request.path == '/polls/' %} active {% endif %}" href="/polls">Vote</a>
       </li>
      </ul>
     </div>
