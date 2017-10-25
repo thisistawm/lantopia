@@ -23,9 +23,9 @@
 </div>
 </form>
 -->
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-6 col-lg-3">
+<div class="container login-page">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-sm-6 col-lg-3 login-form">
 
       <div class="loginError" style="color:#fff;position:fixed;width:100%;text-align:center;top:100px;">
         {% if form.errors %}
@@ -46,15 +46,17 @@
       {% csrf_token %}
 
 
-      {{ form.username }}
-      {{ form.password }}
+      <div class="form-group">{{ form.username }}</div>
+      <div class="form-group">{{ form.password }}</div>
 
-        <button class="loginInput btn btn-primary" type="submit">Login</button>
+        <button class="loginInput btn btn-primary btn-block" type="submit">Login</button>
         <input type="hidden" name="next" value="{{ next }}" />
 
       </form>
 
-      <button class="loginInput btn btn-secondary" onclick="location.href='/signup';">Sign Up</button>
+  
+
+      <p class="text-right">No account yet?&emsp;<button class="loginInput btn btn-outline-primary" onclick="location.href='/signup';">Sign Up</button></p>
 
       
 

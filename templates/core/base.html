@@ -2,6 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="https://fonts.googleapis.com/css?family=Encode+Sans:100,200,300,500,700|Orbitron:400,900" rel="stylesheet"> 
 {% load static %}
+<link rel="stylesheet" href="{% static 'core/black-tie/css/black-tie.min.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'core/bootstrap.css' %}" />
 <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}" />
 
@@ -29,6 +30,8 @@
         <a class="nav-link {% if request.path == '/polls/' %} active {% endif %}" href="/polls">Vote</a>
       </li>
      </ul>
+     <span class="navbar-text"><a href="/logout">Logout</a></span>
+
     </div>
  </nav>
 

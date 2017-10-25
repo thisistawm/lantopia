@@ -3,14 +3,14 @@
 {% block content %}
 
 <div class="row">
-  <div class="col">
-    <h1>{{ user.username }}</h1>
+  <div class="col profile-heading">
+    <h1 class="display-3">{{ user.username }}</h1>
   </div>
 </div>
 
 
 
-<div class="row">
+<div class="row dark-black">
   <div class="col">
     <h4>LANtopia Check List</h4>
 
@@ -27,10 +27,7 @@
     </form>
 
   </div>
-</div>
 
-
-<div class="row">
   <div class="col">
 
     <h4>Change Password</h4>
@@ -59,15 +56,5 @@
   </div>
 </div>
 
-<a href="/logout">logout</href>
-
-  <ul>
-  <li>Username: {{ user.username }}</li>
-  <li>Game: {{ user.profile.game }}</li>
-  <li>Movie: {{ user.profile.movie }}</li>
-  <li>TV: {{ user.profile.tv }}</li>
-  <li>Song: {{ user.profile.song }}</li>
-  <li>Unpacked: {{ user.profile.unpacked }}</li>
-</ul>
 
 {% endblock %}
