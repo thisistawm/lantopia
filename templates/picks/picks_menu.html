@@ -1,1 +1,15 @@
-<a class="nav-link" href="/picks/games">games</a><a class="nav-link" href="/picks/songs">songs</a><a class="nav-link" href="/picks/movies">movies</a><a class="nav-link" href="/picks/tv">tv</a>
+
+<ul class="nav nav-tabs">
+	<li class="nav-item">
+		<a class="nav-link {% if request.path == '/picks/games/' %} active {% endif %}" href="/picks/games">games</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link {% if request.path == '/picks/songs/' %} active {% endif %}" href="/picks/songs">songs</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link {% if request.path == '/picks/movies/' %} active {% endif %}" href="/picks/movies">movies</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link {% if request.path == '/picks/tv/' %} active {% endif %}" href="/picks/tv">tv</a>
+	</li>
+</ul>

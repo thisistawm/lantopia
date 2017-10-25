@@ -2,8 +2,66 @@
 
 {% block content %}
 
-<h2>{{ user.username }}</h2>
-<ul>
+<div class="row">
+  <div class="col">
+    <h1>{{ user.username }}</h1>
+  </div>
+</div>
+
+
+
+<div class="row">
+  <div class="col">
+    <h4>LANtopia Check List</h4>
+
+    <form method="POST">{% csrf_token %}
+      {%for z in todo_form %}
+        {% if z.value == False %}
+          <div class="form-group">
+            <label class='toDoItem form-check-label'>{{ z }}&emsp;{{ z.label }}</label>
+          </div>
+        {% else %}
+          <p style="display:none;">{{ z }}</p>
+        {% endif %}
+      {% endfor %}
+    </form>
+
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col">
+
+    <h4>Change Password</h4>
+
+    <form method="POST">{% csrf_token %}
+        {%for z in password_form %}
+            <div class="form-group">
+                {{ z.label_tag }}
+                {{ z }}
+            </div>
+        {% endfor %}
+        <button class="passwordUpdateButton btn btn-primary" name="passwordUpdateButton" type="submit">Update Password</button>
+    </form>
+
+  </div>
+  <div class="col">
+    <h4>Recommendations</h4>
+
+    <form method="POST">{% csrf_token %}
+        {%for z in profile_form %}
+            <div class="form-group">{{ z.label_tag }}{{ z }}</div>
+        {% endfor %}
+        <button class="loginButton btn btn-primary" name="profileUpdateButton" type="submit">Update Profile</button>
+    </form>
+
+  </div>
+</div>
+
+<a href="/logout">logout</href>
+
+  <ul>
   <li>Username: {{ user.username }}</li>
   <li>Game: {{ user.profile.game }}</li>
   <li>Movie: {{ user.profile.movie }}</li>
@@ -11,34 +69,5 @@
   <li>Song: {{ user.profile.song }}</li>
   <li>Unpacked: {{ user.profile.unpacked }}</li>
 </ul>
-
-<form method="POST">{% csrf_token %}
-    {%for z in password_form %}
-            {{ z.label_tag }} - {{ z }} <br/>
-    {% endfor %}
-    <button class="passwordUpdateButton" name="passwordUpdateButton" type="submit">Update Password</button>
-</form>
-
-<br /><br />
-
-<form method="POST">{% csrf_token %}
-    {%for z in todo_form %}
-        	{% if z.value == False %}
-                <div class='toDoItem'>{{ z }}{{ z.label }}</div><br/>
-            {% else %}
-                <div style="visibility:hidden;position:absolute;">{{ z }}</div>
-		    {% endif %}
-    {% endfor %}
-    <button name="todoUpdateButton" type="submit">Update todo</button>
-</form>
-
-<form method="POST">{% csrf_token %}
-    {%for z in profile_form %}
-        {{ z.label_tag }} - {{ z }}<br/>
-    {% endfor %}
-    <button class="loginButton" name="profileUpdateButton" type="submit">Update Profile</button>
-</form>
-
-<a href="/logout">logout</href>
 
 {% endblock %}
