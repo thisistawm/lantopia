@@ -1,0 +1,32 @@
+html, body, .container.login-page, .login-page .row { 
+	height: 100%; 
+}
+
+.login-page {
+	.login-form {
+		background-color: #191919;
+		padding: 1.5rem 1rem 1rem;
+		border-radius: 5px;
+	}
+
+
+	form {
+		margin: 1rem 0;
+	}
+}
+
+.dark-black {
+	background-color: #191919;
+}
+
+
+/*.profile-heading {
+	background-color: $primary;
+	color: black;
+	padding: 1rem;
+
+	h1 {
+		margin: 0;
+		line-height: 1;
+	}
+}*/
