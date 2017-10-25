@@ -3,26 +3,48 @@
 {% block content %}
 
 {% include "scores/scores_menu.html" %}
+<div class="row">
+    <div class="col">
+        <h2 class="display-4">CAPs</h2>
+    </div>
+</div>
+<div class="row justify-content-between">
+    <div class="col-6">
+        <p class="lead">Completely Arbitrary Points</p>
+        <p>LANtopia has long since needed a comprehensively accurate system to judge our individual worth as human beings. We now have the capacity through the revolutionary introduction of CAPs.</p>
 
-<h2>Completely Arbitrary Points</h2>
+        <p>These Completely Arbitrary Points (CAPs) will finally allow us to identify the purest emodiments of terestrial perfection through a variety of unfair contests and random events!</p>
+
+        <p>Throughout the event, CAPs will be given to the best, the worst, and the random. Sometimes the CAP reward potential will be announced, other times it will be determined after the fact. After all, what fair system doesn't allow the distributor the right to make their own rules on the fly?</p>
+
+        <p>CAPs can be wagered! Feel free to challenge anyone or make your own sidebets. Maybe an all-in CAPs battle to see who lasts longest on the next round of Crypts? Perhaps a friendly wager on who will pass out first?</p>
+
+        <p>You can track your CAPs through the leaderboard, but only Tawm can add/subtract CAPs to your balance. Keep track of your wagers and let him know if you need any changes.</p>
+
+        <p>At the end of LANtopia XII, the top 3 CAP holders will have their chance to pick from a fabulous prize pool and be forever honored in the annals of LANtopia lore.</p>
+    </div>
+    <div class="col-5">
+
  
- <table class="table table-dark">
-    <thead>
-        <tr>
-            <th scope="col">Username</th>
-            <th scope="col">CAPs</th>
-        </tr>
-    </thead>
-    <tbody>
-    
-    {%for z in all_users %}        
-        <tr>
-            <td>{{ z.username }}</td>
-            <td>{{ z.profile.caps }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+         <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">Username</th>
+                    <th scope="col">CAPs</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            {%for z in all_users %}        
+                <tr>
+                    <td>{{ z.username }}</td>
+                    <td>{{ z.profile.caps }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 
 
 {% endblock %}

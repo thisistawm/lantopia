@@ -31,6 +31,7 @@
 
 .nav-tabs {
   border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+  margin-bottom: 2rem;
 
   .nav-item {
     margin-bottom: -$nav-tabs-border-width;

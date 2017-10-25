@@ -2,12 +2,12 @@
 
 {% block content %}
 
-	<h1 class="display-3">LANtopia</h1>
+	<h1 class="display-2 sickshadow">LANtopia</h1>
 
 {% for z in info %}
-    <h3>{{ z.headline }}</h3>
+    <h2>{{ z.headline }}</h2>
 	{{ z.details | linebreaks }}
-	<p>Next Up: {{ z.nextUp }}</p>
+	<p class="nextup">Next Up: {{ z.nextUp }}</p>
 {% endfor %}
 
 

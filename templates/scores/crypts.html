@@ -4,59 +4,110 @@
 
 {% include "scores/scores_menu.html" %}
 
-<h2>Cryptonomithon</h2>
-
-<br /><br /><br />
-
-<div style="text-align: center;">
-
-
-{% if is_member %}
-    <form method="POST">{% csrf_token %}
-        {% for z in member_of %}
-            <input type="text" name="name" value="{{ z.team }}" />
-        {% endfor %}
-        <input type="number" name="crypts_wave" placeholder="Waves Completed" />
-        <input type="number" name="crypts_remaining" placeholder="# Left on Failed Wave" />
-        <br/>
-        <button class="submitScores" name="submitScoresButton" type="submit">Update Score</button>
-    </form>
-{% else %} 
-Create a Team
-    <form method="POST">{% csrf_token %}
-        <select name="team-mate">
-            {%for z in available_members %}
-                <option value="{{ z.username }}">{{ z.username }}</option>
-            {% endfor %}
-        </select>
-        <input type="text" name="name" placeholder="Team Name" />
-        <input type="number" name="crypts_wave" placeholder="Waves Completed" />
-        <input type="number" name="crypts_remaining" placeholder="# Left on Failed Wave" />
-        <br/>
-        <button class="createTeam" name="createTeamButton" type="submit">Permanently Create Team</button>
-    </form>
-{% endif %}
-
-
+<div class="row">
+    <div class="col">
+        <h2 class="display-4">Cryptonomithon</h2>
+    </div>
 </div>
+<div class="row justify-content-between">
+    <div class="col-5">
+        <p>Pun fast, die hard.</p>
 
-<br /><br /><br />
+        <p>Team up with one person for the duration of LANtopia XII to take on the crypts! You have until the closing ceremony to progress as far as you can in the crypts. Take note of your best score in terms of the last wave completed and the number of enemies remaining on your failed wave.</p>
 
-<div>
- 
+        <p>If a team miraculously beats the crypts, they obviouslly win, but if that doesn't happen the winner will be the highest score as indicated by the leaderboard below.</p>
 
-    {%for z in all_teams %}
-        <table>
+        {% if is_member %}
+        <h4>Update Your Score</h4>
+            <form method="POST">{% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Edit your team name:</label>
+                {% for z in member_of %}
+                    <input type="text" class="form-control" name="name" value="{{ z.team }}" />
+                {% endfor %}
+                </div>
+                <div class="form-group">
+                    <label for="crypts-wave">The highest wave you died on:</label>
+                    <input type="number" class="form-control" name="crypts_wave" placeholder="Waves Completed" />
+                </div>
+                <div class="form-group">
+                    <label for="crypts-remaining">The number of enemies left on your last wave:</label>
+                    <input type="number" class="form-control" name="crypts_remaining" placeholder="# Left on Failed Wave" />
+                </div>
+                
+                <button class="submitScores btn btn-primary" name="submitScoresButton" type="submit">Update Score</button>
+            </form>
+        {% else %} 
+        <h4>Create a Team</h4>
+            <form method="POST">{% csrf_token %}
+                <div class="form-group">
+                    <label for="team-mate">Select a team mate:</label>
+                    <select name="team-mate" class="form-control">
+                        {%for z in available_members %}
+                            <option value="{{ z.username }}">{{ z.username }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="name">Enter your team name:</label>
+                    <input type="text" class="form-control" name="name" placeholder="Team Name" />
+                </div>
+                <div class="form-group">
+                    <label for="crypts-wave">The highest wave you died on:</label>
+                    <input type="number" class="form-control" name="crypts_wave" placeholder="Wave You Died On" />
+                </div>
+                <div class="form-group">
+                    <label for="crypts-remaining">The number of enemies left on your last wave:</label>
+                    <input type="number" class="form-control" name="crypts_remaining" placeholder="# Left on Failed Wave" />
+                </div>
+                <button class="createTeam btn btn-primary" name="createTeamButton" type="submit">Permanently Create Team</button>
+            </form>
+        {% endif %}
+
+    </div>
+    <div class="col-6">
+
+        <table class="table table-dark">
+            <thead>
             <tr>
-                <td width="200px">{{ z.name }}</td>
-                <td width="200px">{{ z.get_players }}</td>
-                <td width="100px">{{ z.crypts_wave }}</td>
-                <td width="100px">{{ z.crypts_remaining }}</td>
+                <th scope="col">Team Name</th>
+                <th scope="col">Players</th>
+                <th scope="col">Final Wave Reached</th>
+                <th scope="col">Remaining Enemies</th>
             </tr>
+            </thead>
+            <tbody>
+            
+            {%for z in all_teams %}
+            
+            <tr>
+                <td>{{ z.name }}</td>
+                <td>{{ z.get_players }}</td>
+                <td>{{ z.crypts_wave }}</td>
+                <td>{{ z.crypts_remaining }}</td>
+            </tr>
+            
+            {% endfor %}
+            </tbody>
         </table>
-    {% endfor %}
 
+    </div>
 </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 {% endblock %}
