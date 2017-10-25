@@ -1,6 +1,6 @@
 
 
-.loginPrompt{
+/*.loginPrompt{
 	text-align:center;
 	margin-top:150px;
 	color:#fff
@@ -32,11 +32,11 @@
    text-align: center;
 }
 
-:-moz-placeholder { /* Firefox 18- */
+:-moz-placeholder { 
    text-align: center;  
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
+::-moz-placeholder {  
    text-align: center;  
 }
 
@@ -44,4 +44,4 @@
    text-align: center; 
 }
 
-/* core/static/core */
+ */

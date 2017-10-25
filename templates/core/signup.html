@@ -1,25 +1,51 @@
-
-{% extends 'core/base.html' %}
+<!doctype html>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'core/bootstrap.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}" />
 
 {% block content %}
 
-<div class="loginPrompt">
 
-  <form method="post">
-    {% csrf_token %}
+<!--
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
 
-
-    {% for field in form %}
-        
-        <div>{{ field }}</div>
-        
-        {% for error in field.errors %}
-          <div class="invalid-feedback">{{ error }}</div>
-        {% endfor %}
+<div>
+    {%for field in form %}
+        <input id="{{ field.id_for_label }}"" name="{{ field.html_name }}" value="{{ field.name }}" type="text" />
     {% endfor %}
-  <button class="loginInput btn btn-primary" type="submit">Sign Up</button>
-  </form>
-
 </div>
+
+<div>
+  <input type="submit" value="login" />
+  <input type="hidden" name="next" value="{{ next }}" />
+</div>
+</form>
+-->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-6 col-lg-3">
+
+
+      <form method="post">
+        {% csrf_token %}
+
+
+        {% for field in form %}
+            
+            <div>{{ field }}</div>
+            
+            {% for error in field.errors %}
+              <div class="invalid-feedback">{{ error }}</div>
+            {% endfor %}
+        {% endfor %}
+      <button class="loginInput btn btn-primary" type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
 
 {% endblock %}

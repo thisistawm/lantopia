@@ -3,12 +3,11 @@
 {% block content %}
 
 	<h1 class="display-3">LANtopia</h1>
-	<hr class="my-4">
 
 {% for z in info %}
     <h3>{{ z.headline }}</h3>
-	{{ z.details|linebreaks }}
-	<p>{{ z.nextUp }}</p>
+	{{ z.details | linebreaks }}
+	<p>Next Up: {{ z.nextUp }}</p>
 {% endfor %}
 
 
