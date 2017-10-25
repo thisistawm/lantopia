@@ -49,7 +49,7 @@ def save_user_profile(sender, instance, **kwargs):
 
 class HomeInfo(models.Model):
     headline = models.CharField(max_length=200, blank=True)
-    details = models.TextField(max_length=1000, blank=True)
+    details = models.TextField(max_length=5000, blank=True)
     nextUp = models.CharField(max_length=200, blank=True)
     post_time = models.DateTimeField(blank=True, null=True)
 

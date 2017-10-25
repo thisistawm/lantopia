@@ -4,24 +4,40 @@
 
 {% include "scores/scores_menu.html" %}
 
-<h2>Cryptonomicon</h2>
+<h2>Cryptonomithon</h2>
 
 <br /><br /><br />
 
 <div style="text-align: center;">
-Create a Team
-<form method="POST">{% csrf_token %}
-    <select name="team-mate">
-        {%for z in all_users %}
-            <option value="{{ z.username }}">{{ z.username }}</option>
+
+
+{% if is_member %}
+    <form method="POST">{% csrf_token %}
+        {% for z in member_of %}
+            <input type="text" name="name" value="{{ z.team }}" />
         {% endfor %}
-    </select>
-    <input type="text" name="name" placeholder="Team Name" />
-    <input type="text" name="crypts_wave" placeholder="Waves Completed" />
-    <input type="text" name="crypts_remaining" placeholder="# Left on Failed Wave" />
-    <br/>
-    <button class="createTeam" name="createTeamButton" type="submit">Permanently Create Team</button>
-</form>
+        <input type="number" name="crypts_wave" placeholder="Waves Completed" />
+        <input type="number" name="crypts_remaining" placeholder="# Left on Failed Wave" />
+        <br/>
+        <button class="submitScores" name="submitScoresButton" type="submit">Update Score</button>
+    </form>
+{% else %} 
+Create a Team
+    <form method="POST">{% csrf_token %}
+        <select name="team-mate">
+            {%for z in available_members %}
+                <option value="{{ z.username }}">{{ z.username }}</option>
+            {% endfor %}
+        </select>
+        <input type="text" name="name" placeholder="Team Name" />
+        <input type="number" name="crypts_wave" placeholder="Waves Completed" />
+        <input type="number" name="crypts_remaining" placeholder="# Left on Failed Wave" />
+        <br/>
+        <button class="createTeam" name="createTeamButton" type="submit">Permanently Create Team</button>
+    </form>
+{% endif %}
+
+
 </div>
 
 <br /><br /><br />

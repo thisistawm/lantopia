@@ -19,6 +19,8 @@ from django.contrib.auth import views as auth_views
 from .forms import CustomAuthForm
 from core import views
 
+handler404 = views.page_not_found
+
 urlpatterns = [
     url(r'^home/$', views.homeInfo, name='homeInfo'),
     url(r'^profile/', include('core.urls')),

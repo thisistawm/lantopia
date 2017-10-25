@@ -3,8 +3,8 @@ from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.forms.widgets import PasswordInput, TextInput
 
 class CustomAuthForm(AuthenticationForm):
-	    username = forms.CharField(widget=TextInput(attrs={'class':'loginInput','placeholder':'username'}))
-	    password = forms.CharField(widget=PasswordInput(attrs={'class':'loginInput','placeholder':'password'}))
+	username = forms.CharField(widget=TextInput(attrs={'class':'loginInput','placeholder':'username'}))
+	password = forms.CharField(widget=PasswordInput(attrs={'class':'loginInput','placeholder':'password'}))
 
 class SignupForm(UserCreationForm):
     username = forms.CharField(widget=TextInput(attrs={'class':'loginInput','placeholder':'username'}))

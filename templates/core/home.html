@@ -7,8 +7,8 @@
 
 {% for z in info %}
     <h3>{{ z.headline }}</h3>
-	<p>{{ z.details }}</p>
-	<p>{{ z.nextup }}</p>
+	{{ z.details|linebreaks }}
+	<p>{{ z.nextUp }}</p>
 {% endfor %}
 
 

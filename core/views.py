@@ -64,3 +64,7 @@ def signup(request):
 def homeInfo(request):
     info = HomeInfo.objects.filter(post_time__lte=timezone.now()).order_by('post_time')
     return render(request, 'core/home.html', {'info': info} )
+
+def page_not_found(request):
+    response = "<h1>no findy</h1>"
+    return HttpResponse(response)
