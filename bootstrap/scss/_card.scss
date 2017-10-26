@@ -70,6 +70,8 @@
   margin-bottom: 0; // Removes the default margin-bottom of <hN>
   background-color: $card-cap-bg;
   border-bottom: $card-border-width solid $card-border-color;
+  font-size: $h5-font-size;
+  color: $gray-100;
 
   &:first-child {
     @include border-radius($card-inner-border-radius $card-inner-border-radius 0 0);
@@ -176,7 +178,7 @@
     margin-bottom: $card-group-margin;
   }
 
-  @include media-breakpoint-up(sm) {
+  @include media-breakpoint-up(md) {
     flex-flow: row wrap;
 
     .card {

@@ -230,7 +230,8 @@ select.form-control-lg {
 }
 
 .form-check-label {
-  padding-left: $form-check-input-gutter;
+  padding-left: 2.3rem;
+  text-indent: -1.1rem;
   margin-bottom: 0; // Override default `<label>` bottom margin
 }
 
@@ -355,4 +356,8 @@ select.form-control-lg {
       top: 0;
     }
   }
+}
+
+.form-container {
+  margin: 2rem 0 3rem;
 }

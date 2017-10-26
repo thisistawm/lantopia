@@ -10,18 +10,32 @@
 
   th,
   td {
-    padding: $table-cell-padding;
-    vertical-align: top;
+    padding: ($table-cell-padding - 0.25rem) $table-cell-padding;
+    vertical-align: middle;
+    //text-align: center;
     border-top: $table-border-width solid $table-border-color;
   }
+  tr:nth-child(1) td {
+    border-top: 0;
+  }
+
 
   thead th {
+    vertical-align: middle;
+    border-bottom: (1 * $table-border-width) solid $table-border-color;
+    border-top: 0;
+    background-color: #333333;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.05rem;
     vertical-align: bottom;
-    border-bottom: (2 * $table-border-width) solid $table-border-color;
+      
+    
   }
 
   tbody + tbody {
-    border-top: (2 * $table-border-width) solid $table-border-color;
+    border-top: (1 * $table-border-width) solid $table-border-color;
   }
 
   .table {

@@ -10,7 +10,7 @@ h1, h2, h3, h4, h5, h6,
   font-family: $headings-font-family;
   font-weight: $headings-font-weight;
   line-height: $headings-line-height;
-  color: $headings-color;
+  color: $gray-100; //$headings-color;
 }
 
 h1, .h1 { font-size: $h1-font-size; font-family: Orbitron, "Encode Sans", sans-serif; }
@@ -79,7 +79,8 @@ mark,
 .nextup
 {
   font-weight: 400;
-  color: rgba(162,215,41,0.6);
+  //color: rgba(162,215,41,0.6);
+  color:$gray-100;
   font-size: $font-size-lg;
 }
 
@@ -102,6 +103,10 @@ mark,
   &:not(:last-child) {
     margin-right: $list-inline-padding;
   }
+}
+
+ol, ul, dl {
+  padding-left: 1.1rem;
 }
 
 
@@ -134,3 +139,14 @@ mark,
 .sickshadow {
   text-shadow: 4px 4px 0px $gray-900, 7px 7px 0px rgba(162,215,41,0.6);
 }
+
+.sickshadow-black {
+  text-shadow: 4px 4px 0px $gray-900, 7px 7px 0px rgba(0,0,0,0.6);
+}
+
+
+.word-break {
+  word-break: break-all;
+}
+
+.login-error { color: $red; text-align:center;  }

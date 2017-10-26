@@ -4,16 +4,21 @@
 
 <div class="row">
   <div class="col profile-heading">
-    <h1 class="display-3">{{ user.username }}</h1>
+    <h1 class="display-3 sickshadow-black">{{ user.username }}</h1>
   </div>
 </div>
 
 
 
-<div class="row dark-black">
-  <div class="col">
-    <h4>LANtopia Check List</h4>
+<div class="card-group">
 
+  {% if checklist_done == False %}
+  <div class="card bg-dark">
+    <div class="card-header">
+      LANtopia Check List
+</div>
+     {% if z.value == False}
+    <div class="card-body">
     <form method="POST">{% csrf_token %}
       {%for z in todo_form %}
         {% if z.value == False %}
@@ -25,13 +30,16 @@
         {% endif %}
       {% endfor %}
     </form>
-
   </div>
 
-  <div class="col">
+  </div>
+  {% endif %}
 
-    <h4>Change Password</h4>
-
+  <div class="card bg-dark">
+    <div class="card-header">
+      Change Password
+      </div>
+    <div class="card-body">
     <form method="POST">{% csrf_token %}
         {%for z in password_form %}
             <div class="form-group">
@@ -41,17 +49,21 @@
         {% endfor %}
         <button class="passwordUpdateButton btn btn-primary" name="passwordUpdateButton" type="submit">Update Password</button>
     </form>
+  </div>
 
   </div>
-  <div class="col">
-    <h4>Recommendations</h4>
-
-    <form method="POST">{% csrf_token %}
-        {%for z in profile_form %}
-            <div class="form-group">{{ z.label_tag }}{{ z }}</div>
-        {% endfor %}
-        <button class="loginButton btn btn-primary" name="profileUpdateButton" type="submit">Update Profile</button>
-    </form>
+  <div class="card bg-dark">
+    <div class="card-header">
+      Recommendations
+    </div>
+    <div class="card-body">
+      <form method="POST">{% csrf_token %}
+          {%for z in profile_form %}
+              <div class="form-group">{{ z.label_tag }}{{ z }}</div>
+          {% endfor %}
+          <button class="loginButton btn btn-primary" name="profileUpdateButton" type="submit">Update Profile</button>
+      </form>
+    </div>
 
   </div>
 </div>

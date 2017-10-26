@@ -10,13 +10,14 @@
     </div>
 </div>
 <div class="row justify-content-between">
-    <div class="col-5">
-        <p>Pun fast, die hard.</p>
+    <div class="col-lg-5">
+        <p class="lead">Pun fast, die hard.</p>
 
         <p>Team up with one person for the duration of LANtopia XII to take on the crypts! You have until the closing ceremony to progress as far as you can in the crypts. Take note of your best score in terms of the last wave completed and the number of enemies remaining on your failed wave.</p>
 
         <p>If a team miraculously beats the crypts, they obviouslly win, but if that doesn't happen the winner will be the highest score as indicated by the leaderboard below.</p>
 
+        <div class="form-container">
         {% if is_member %}
         <h4>Update Your Score</h4>
             <form method="POST">{% csrf_token %}
@@ -63,17 +64,18 @@
                 <button class="createTeam btn btn-primary" name="createTeamButton" type="submit">Permanently Create Team</button>
             </form>
         {% endif %}
+        </div>
 
     </div>
-    <div class="col-6">
+    <div class="col-lg-6">
 
         <table class="table table-dark">
             <thead>
             <tr>
-                <th scope="col">Team Name</th>
+                <th scope="col">Team</th>
                 <th scope="col">Players</th>
-                <th scope="col">Final Wave Reached</th>
-                <th scope="col">Remaining Enemies</th>
+                <th scope="col">Final Wave</th>
+                <th scope="col">Enemies Left</th>
             </tr>
             </thead>
             <tbody>
@@ -81,7 +83,7 @@
             {%for z in all_teams %}
             
             <tr>
-                <td>{{ z.name }}</td>
+                <td class="word-break">{{ z.name }}</td>
                 <td>{{ z.get_players }}</td>
                 <td>{{ z.crypts_wave }}</td>
                 <td>{{ z.crypts_remaining }}</td>
