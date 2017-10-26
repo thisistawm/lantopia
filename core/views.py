@@ -7,17 +7,17 @@ from django.utils import timezone
 
 from .models import Profile, Todo, HomeInfo
 from .forms import ProfileForm, TodoForm
-from lantopia.forms import SignupForm
+from lantopia.forms import SignupForm, CustomPasswordChangeForm
 
 def profile(request):
     if request.method == "POST" and 'profileUpdateButton' in request.POST:
         profile_form = ProfileForm(request.POST,  instance=request.user.profile)
-        password_form = PasswordChangeForm(request.user)
+        password_form = CustomPasswordChangeForm(request.user)
         todo_form = TodoForm(instance=request.user.todo)
         if profile_form.is_valid():
             profile_form.save()
     elif request.method == "POST" and 'passwordUpdateButton' in request.POST:
-        password_form = PasswordChangeForm(request.user, request.POST)
+        password_form = CustomPasswordChangeForm(request.user, request.POST)
         todo_form = TodoForm(instance=request.user.todo)
         profile_form = ProfileForm(instance=request.user.profile)
         if password_form.is_valid():
@@ -25,12 +25,12 @@ def profile(request):
             update_session_auth_hash(request, user)
     elif request.method == "POST":
         todo_form = TodoForm(request.POST,  instance=request.user.todo)
-        password_form = PasswordChangeForm(request.user)
+        password_form = CustomPasswordChangeForm(request.user)
         profile_form = ProfileForm(instance=request.user.profile)
         if todo_form.is_valid():
             todo_form.save()
     else:
-        password_form = PasswordChangeForm(request.user)
+        password_form = CustomPasswordChangeForm(request.user)
         profile_form = ProfileForm(instance=request.user.profile)
         todo_form = TodoForm(instance=request.user.todo)
     if request.method =="POST":
