@@ -48,7 +48,6 @@ def profile(request):
             'todo_form': todo_form
         })
 
-@login_required
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -67,6 +66,14 @@ def signup(request):
 def homeInfo(request):
     info = HomeInfo.objects.filter(post_time__lte=timezone.now()).order_by('post_time')
     return render(request, 'core/home.html', {'info': info} )
+
+@login_required
+def games(request):
+    return render(request, 'core/games.html')
+
+@login_required
+def players(request):
+    return render(request, 'core/players.html')
 
 def page_not_found(request):
     response = "<h1>no findy</h1>"

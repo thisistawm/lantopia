@@ -24,6 +24,8 @@ handler404 = views.page_not_found
 urlpatterns = [
     url(r'^home/$', views.homeInfo, name='homeInfo'),
     url(r'^profile/', include('core.urls')),
+    url(r'^games/$', views.games, name='games'),
+    url(r'^players/$', views.players, name='players'),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^polls/', include('polls.urls')),
     url(r'^picks/', include('picks.urls')),

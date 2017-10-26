@@ -20,10 +20,16 @@
         <a class="nav-link {% if request.path == '/profile/' %} active {% endif %}" href="/profile">Profile</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {% if request.path == '/scores/' %} active {% endif %}" href="/scores">Leaderboards</a>
+        <a class="nav-link {% if request.path == '/games/' %} active {% endif %}" href="/games">Games</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link {% if request.path == '/picks/' %} active {% endif %}" href="/picks">Recommendations</a>
+        <a class="nav-link {% if request.path == '/players/' %} active {% endif %}" href="/players">Players</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == '/scores/' or request.path == '/scores/caps/' or request.path ==  '/scores/crypts/' %} active {% endif %}" href="/scores">Leaderboards</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link {% if request.path == '/picks/' or request.path == '/picks/games/' or request.path == '/picks/movies/' or request.path == '/picks/tv/' or request.path == '/picks/songs/' %} active {% endif %}" href="/picks">Recommendations</a>
       </li>
       <li class="nav-item">
         <a class="nav-link {% if request.path == '/polls/' %} active {% endif %}" href="/polls">Vote</a>
