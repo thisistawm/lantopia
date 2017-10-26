@@ -4,11 +4,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import update_session_auth_hash, login, authenticate
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 from .models import Profile, Todo, HomeInfo
 from .forms import ProfileForm, TodoForm
 from lantopia.forms import SignupForm, CustomPasswordChangeForm
 
+@login_required
 def profile(request):
     if request.method == "POST" and 'profileUpdateButton' in request.POST:
         profile_form = ProfileForm(request.POST,  instance=request.user.profile)
@@ -46,6 +48,7 @@ def profile(request):
             'todo_form': todo_form
         })
 
+@login_required
 def signup(request):
     if request.method == 'POST':
         form = SignupForm(request.POST)
@@ -60,7 +63,7 @@ def signup(request):
         form = SignupForm()
     return render(request, 'core/signup.html', {'form': form})
 
-
+@login_required
 def homeInfo(request):
     info = HomeInfo.objects.filter(post_time__lte=timezone.now()).order_by('post_time')
     return render(request, 'core/home.html', {'info': info} )
