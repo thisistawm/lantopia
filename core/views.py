@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash, login, authenticate
 from django.contrib.auth.forms import PasswordChangeForm, UserCreationForm
 from django.utils import timezone
@@ -25,6 +26,12 @@ def profile(request):
         if password_form.is_valid():
             user = password_form.save()
             update_session_auth_hash(request, user)
+        else:
+            return render(request, 'core/profile.html', {
+            'password_form': password_form,
+            'profile_form': profile_form,
+            'todo_form': todo_form
+             })
     elif request.method == "POST":
         todo_form = TodoForm(request.POST,  instance=request.user.todo)
         password_form = CustomPasswordChangeForm(request.user)
@@ -35,17 +42,26 @@ def profile(request):
         password_form = CustomPasswordChangeForm(request.user)
         profile_form = ProfileForm(instance=request.user.profile)
         todo_form = TodoForm(instance=request.user.todo)
+    todo_count = 0
+    checklist_done = False
+    for z in todo_form:
+        if z.value == False:
+            todo_count += 1
     if request.method =="POST":
         return HttpResponseRedirect('/profile', {
-	        'password_form': password_form,
-	        'profile_form': profile_form,
-	        'todo_form': todo_form
+            'password_form': password_form,
+            'profile_form': profile_form,
+            'todo_form': todo_form,
+            'checklist_done': checklist_done,
+            'todo_count': todo_count
         })
     else:
         return render(request, 'core/profile.html', {
             'password_form': password_form,
             'profile_form': profile_form,
-            'todo_form': todo_form
+            'todo_form': todo_form,
+            'checklist_done': checklist_done,
+            'todo_count': todo_count
         })
 
 def signup(request):

@@ -17,7 +17,6 @@
     <div class="card-header">
       LANtopia Check List
 </div>
-     {% if z.value == False}
     <div class="card-body">
     <form method="POST">{% csrf_token %}
       {%for z in todo_form %}
@@ -41,6 +40,7 @@
       </div>
     <div class="card-body">
     <form method="POST">{% csrf_token %}
+
         {%for z in password_form %}
             <div class="form-group">
                 {{ z.label_tag }}
@@ -49,6 +49,9 @@
         {% endfor %}
         <button class="passwordUpdateButton btn btn-primary" name="passwordUpdateButton" type="submit">Update Password</button>
     </form>
+    {% if password_form.errors %}
+        <p>stay determined&hellip;</p>
+    {% endif %}
   </div>
 
   </div>

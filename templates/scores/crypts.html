@@ -15,7 +15,7 @@
 
         <p>Team up with one person for the duration of LANtopia XII to take on the crypts! You have until the closing ceremony to progress as far as you can in the crypts. Take note of your best score in terms of the last wave completed and the number of enemies remaining on your failed wave.</p>
 
-        <p>If a team miraculously beats the crypts, they obviouslly win, but if that doesn't happen the winner will be the highest score as indicated by the leaderboard below.</p>
+        <p>If a team miraculously beats the crypts, they obviouslly win, but if that doesn't happen the winner will be the highest score as indicated by the leaderboard.</p>
 
         <div class="form-container">
         {% if is_member %}
@@ -28,12 +28,12 @@
                 {% endfor %}
                 </div>
                 <div class="form-group">
-                    <label for="crypts-wave">The highest wave you died on:</label>
-                    <input type="number" class="form-control" name="crypts_wave" placeholder="Waves Completed" />
+                    <label for="crypts-wave">The highest wave you reached: </label>
+                    <input type="number" class="form-control" name="crypts_wave" placeholder="Wave Reached" value="{{ my_team.crypts_wave}}" />
                 </div>
                 <div class="form-group">
                     <label for="crypts-remaining">The number of enemies left on your last wave:</label>
-                    <input type="number" class="form-control" name="crypts_remaining" placeholder="# Left on Failed Wave" />
+                    <input type="number" class="form-control" name="crypts_remaining" placeholder="# Left on Failed Wave" value="{{ my_team.crypts_remaining }}" />
                 </div>
                 
                 <button class="submitScores btn btn-primary" name="submitScoresButton" type="submit">Update Score</button>
@@ -55,11 +55,11 @@
                 </div>
                 <div class="form-group">
                     <label for="crypts-wave">The highest wave you died on:</label>
-                    <input type="number" class="form-control" name="crypts_wave" placeholder="Wave You Died On" />
+                    <input type="number" class="form-control" name="crypts_wave" placeholder="Wave You Died On" value="0" />
                 </div>
                 <div class="form-group">
                     <label for="crypts-remaining">The number of enemies left on your last wave:</label>
-                    <input type="number" class="form-control" name="crypts_remaining" placeholder="# Left on Failed Wave" />
+                    <input type="number" class="form-control" name="crypts_remaining" placeholder="# Left on Failed Wave" value="0" />
                 </div>
                 <button class="createTeam btn btn-primary" name="createTeamButton" type="submit">Permanently Create Team</button>
             </form>

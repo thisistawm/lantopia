@@ -12,7 +12,8 @@ from .forms import TeamForm
 def crypts(request):
     if request.method == "POST" and 'createTeamButton' in request.POST:
         form = TeamForm(request.POST)
-        new_team = form.save()
+        if form.is_valid():
+            new_team = form.save()
         new_member1 = TeamMember(user=request.user, team=new_team)
         new_member1.save()
         team_mate = User.objects.get(username=request.POST['team-mate'])
@@ -20,22 +21,37 @@ def crypts(request):
         new_member2.save()
     if request.method == "POST" and 'submitScoresButton' in request.POST:
         scores_form = TeamForm(request.POST, instance=Team.objects.get(name=TeamMember.objects.get(user=request.user).team))
-        update_scores = scores_form.save()
+        if scores_form.is_valid():
+            update_scores = scores_form.save()
     all_users = User.objects.all().exclude(username="admin").order_by('username')
     all_teams = Team.objects.all().order_by('-crypts_wave', 'crypts_remaining')
     is_member = TeamMember.objects.filter(user=request.user).exists()
     member_of = TeamMember.objects.filter(user=request.user)
+    my_team = Team.objects.get(teammember=member_of)
     available_members = []
     for z in all_users:
         if not TeamMember.objects.filter(user=z).exists():
-            available_members.append(z)
-    return render(request, 'scores/crypts.html', {
+            if not z == request.user:
+                available_members.append(z)
+    if request.method =="POST":
+        return HttpResponseRedirect('/scores/crypts', {
         'all_users': all_users, 
         'all_teams': all_teams, 
         'is_member': is_member, 
         'member_of': member_of,
         'available_members': available_members,
+        'my_team': my_team
         })
+    else:
+        return render(request, 'scores/crypts.html', {
+            'all_users': all_users, 
+            'all_teams': all_teams, 
+            'is_member': is_member, 
+            'member_of': member_of,
+            'available_members': available_members,
+            'my_team': my_team
+            })
+
 
 def caps(request):
     all_users = User.objects.all().exclude(username="admin").order_by('-profile__caps')
